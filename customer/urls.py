@@ -1,7 +1,7 @@
 from rest_framework import routers
 
-from testovoe_ws.customer import views
+from customer.models import Customer
 
 router = routers.DefaultRouter()
-router.register('', views.CustomerPrivateView, 'Customer')
+router.register('Customer', Customer.ViewSet)
 urlpatterns = router.urls

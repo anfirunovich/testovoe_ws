@@ -1,8 +1,8 @@
 from rest_framework import routers
 
-from testovoe_ws.supplier import views
+from supplier.views import SupplierViewSet
 
 
 router = routers.DefaultRouter()
-router.register('supplier', views.SupplierPublicView, 'Supplier')
+router.register('supplier', SupplierViewSet)
 urlpatterns = router.urls
