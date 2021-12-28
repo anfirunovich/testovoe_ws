@@ -1,12 +1,19 @@
-from rest_framework import permissions
-from rest_framework.viewsets import ModelViewSet
+from rest_framework import mixins, viewsets
 
 from supplier.models import Supplier
+from supplier.serializers import SupplierSerializer
 
 
-class SupplierView(ModelViewSet):
+class SupplierViewSet(
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.GenericViewSet,
+):
     queryset = Supplier.objects.all()
-    serializer_class = GetSupplierSerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
+    default_serializer_class = SupplierSerializer
+    serializer_class = SupplierSerializer
 
