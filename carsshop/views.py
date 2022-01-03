@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import mixins, viewsets
 
-# Create your views here.
+from carsshop.models import Car
+from carsshop.serializers import CarSerializer
+
+
+class CarViewSet()
