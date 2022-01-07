@@ -1,6 +1,11 @@
 from django.db import models
 
-from carsshop.models import Car
+
+class Car(models.Model):
+    model = models.CharField(max_length=256, verbose_name='model')
+    color = models.CharField(max_length=256, verbose_name='color')
+    year_of_release = models.DateTimeField()
+    price = models.DecimalField()
 
 
 class Supplier(models.Model):

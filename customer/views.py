@@ -4,7 +4,7 @@ from customer.models import Customer
 from customer.serializers import CustomerSerializer
 
 
-class SupplierViewSet(
+class CustomerViewSet(
     mixins.ListModelMixin,
     mixins.CreateModelMixin,
     mixins.RetrieveModelMixin,

@@ -19,8 +19,4 @@ services:
 volumes:
   postgres_data:
 
-rabbitmq:
-    image: rabbitmq
-    ports:
-      - 5672:5672
 
