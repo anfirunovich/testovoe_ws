@@ -1,7 +1,8 @@
 from django.db import models
+from carsshop.models import Car, Address
 
 
-class Car(models.Model):
+class SuppliersCar(models.Model):
     model = models.CharField(max_length=256, verbose_name='model')
     color = models.CharField(max_length=256, verbose_name='color')
     year_of_release = models.DateTimeField()
@@ -12,6 +13,6 @@ class Supplier(models.Model):
     title = models.CharField(max_length=100, verbose_name='title')
     description = models.TextField(max_length=1000, verbose_name='description')
     year_of_foundation = models.DateTimeField(verbose_name='year_of_foundation')
-    address = models.OneToOneField(null=True, on_delete=models.SET_NULL)
+    address = models.OneToOneField(Address, null=True, on_delete=models.SET_NULL)
 
     cars = models.ManyToManyField(Car, verbose_name='SuppliersCar')
