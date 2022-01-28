@@ -1,7 +1,8 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets, permissions
+from rest_framework.viewsets import ModelViewSet
 
-from customer.models import Customer
-from customer.serializers import CustomerSerializer
+from customer.models import Customer, Purchase
+from customer.serializers import CustomerSerializer, GetPurchaseSerializer
 
 
 class CustomerViewSet(
@@ -16,3 +17,11 @@ class CustomerViewSet(
 
     default_serializer_class = CustomerSerializer
     serializer_class = CustomerSerializer
+
+
+class PurchaseView(ModelViewSet):
+    queryset = Purchase.objects.all()
+    serializer_class = GetPurchaseSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    filter_fields = ('car', 'car_showroom', 'discount',)
+    search_fields = ('car', 'car_showroom', 'discount',)
