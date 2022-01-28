@@ -1,7 +1,8 @@
 from rest_framework import routers
 
-from testovoe_ws.carsshop import views
+from carsshop import views
 
 router = routers.DefaultRouter()
-router.register()
+router.register('', views.CarsshopPublicView, 'Carsshop')
+router.register('cars_of_showroom', views.CarsshopView, 'CarsOfShowroom')
 urlpatterns = router.urls
