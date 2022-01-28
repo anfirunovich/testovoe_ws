@@ -2,14 +2,18 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from datetime import datetime
 
-from carsshop.models import Car, Carsshop
+from carsshop.models import Carsshop
 from core.abstract_models import CreatedAt, UpdatedAt, SoftDelete
+from supplier.models import Car
 
 
 class Customer(models.Model):
     name = models.CharField(max_length=100, verbose_name='name')
     last_name = models.CharField(max_length=100, verbose_name='last_name')
     email = models.EmailField(max_length=100, verbose_name='email')
+    phone_number = models.CharField(max_length=40, verbose_name='phone_number')
+
+    balance = models.FloatField(null=True, blank=True, verbose_name='balance')
 
 
 class Purchase(CreatedAt, UpdatedAt, SoftDelete):
